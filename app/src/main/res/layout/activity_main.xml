@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/login_layout"
     android:background="@mipmap/ic_channel"
     tools:context=".MainActivity">
 
@@ -49,7 +50,7 @@
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
     <RelativeLayout
         android:id="@+id/password"
@@ -68,8 +69,6 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:textSize="30sp" />
 
         <ImageView
@@ -77,27 +76,15 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"
             android:adjustViewBounds="true"
-            android:padding="10dp"
             android:src="@drawable/ic_password" />
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password"
-        android:layout_marginTop="20dp"
-        android:gravity="end"
-        android:text="Forgot Password"
-        android:textColor="@color/primary" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_below="@id/forgotPassword"
+        android:layout_below="@id/password"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -122,7 +109,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_toStartOf="@+id/orTxt"
-            android:background="#1A0000000" />
+            android:background="#1A0000" />
 
         <TextView
             android:id="@+id/orTxt"
@@ -137,8 +124,8 @@
             android:layout_height="1dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_toStartOf="@+id/orTxt"
-            android:background="#1A0000000" />
+            android:layout_toEndOf="@+id/orTxt"
+            android:background="#1A0000" />
     </RelativeLayout>
 
     <ImageView
@@ -147,7 +134,23 @@
         android:layout_below="@id/orlayout"
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_fingerprint"
-
-
+        android:id="@+id/thumb"
         />
+
+    <TextView
+        android:id="@+id/register"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thumb"
+        android:layout_marginTop="20dp"
+        android:gravity="right"
+        android:text="Don't Have an account Sign UP"
+        android:textColor="@color/primary" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 </RelativeLayout>
