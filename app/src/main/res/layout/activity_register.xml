@@ -247,6 +247,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="right"
                 android:clickable="true"
+                android:textSize="20sp"
                 android:text="Already Have an account Sign In"
                 android:textColor="@color/primary" />
         </LinearLayout>

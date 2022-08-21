@@ -139,11 +139,12 @@
 
     <TextView
         android:id="@+id/register"
-        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/thumb"
         android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:textSize="20sp"
         android:gravity="right"
         android:text="Don't Have an account Sign UP"
         android:textColor="@color/primary" />
