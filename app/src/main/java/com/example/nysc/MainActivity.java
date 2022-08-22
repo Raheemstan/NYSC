@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!" , Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
             }
 
             // this method will automatically call when it is failed verify fingerprint
