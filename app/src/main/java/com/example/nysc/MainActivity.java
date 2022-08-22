@@ -2,8 +2,11 @@ package com.example.nysc;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.biometric.*;
 import androidx.core.content.ContextCompat;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView btn_fp;
     TextView reg;
+    AppCompatButton login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         //assign variable reference from view
         btn_fp = findViewById(R.id.thumb);
         reg = findViewById(R.id.register);
+        login = findViewById(R.id.login);
 
         //create new method to check whether support or not
         checkBioMetricSupported();
@@ -51,9 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!" , Toast.LENGTH_SHORT).show();
+                changeActivity(HomeActivity.class);
 
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(intent);
             }
 
             // this method will automatically call when it is failed verify fingerprint
@@ -79,13 +83,22 @@ public class MainActivity extends AppCompatActivity {
 
         //perform registration
         reg.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
-            startActivity(intent);
+            changeActivity(RegisterActivity.class);
+        });
+
+        //perform login
+        login.setOnClickListener(view -> {
+            Toast.makeText(getApplicationContext(),
+                    "Authentication succeeded!" , Toast.LENGTH_SHORT).show();
+            changeActivity(HomeActivity.class);
         });
 
     }
 
-
+    void changeActivity(Class activity){
+        Intent intent = new Intent(getApplicationContext(), activity);
+        startActivity(intent);
+    }
 
     BiometricPrompt.PromptInfo.Builder dialogMetric()
     {
