@@ -11,13 +11,11 @@ import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private long pressedTime;
     CardView logout;
     ImageButton settingGear;
 
-    void changeActivity(Class activity){
-        Intent intent = new Intent(getApplicationContext(), activity);
-        startActivity(intent);
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         logout = findViewById(R.id.logout);
@@ -25,22 +23,34 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        settingGear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(HomeActivity.this,"There is no back action",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        settingGear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                return;
+//            }
+//        });
 
 //        logout.setOnClickListener(view -> {
 //            changeActivity(MainActivity.class);
 //        });
     }
 
+    public void changeActivity(Class activity){
+        Intent intent = new Intent(getApplicationContext(), activity);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
-        Toast.makeText(HomeActivity.this,"There is no back action",Toast.LENGTH_SHORT).show();
+        if (pressedTime + 2000 > System.currentTimeMillis()) {
+        super.onBackPressed();
+        finish();
+    } else {
+        Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
     }
+        pressedTime = System.currentTimeMillis();
+    }
+
 
 }
