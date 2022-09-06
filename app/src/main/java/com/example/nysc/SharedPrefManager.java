@@ -48,4 +48,9 @@ public class SharedPrefManager {
         editor.apply();
         return true;
     }
+
+    public String getUserDetails(){
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(Shared_Pref_Name, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_EMAIL, null);
+    }
 }

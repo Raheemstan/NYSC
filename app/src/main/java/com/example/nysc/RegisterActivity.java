@@ -86,11 +86,9 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if(!jsonObject.getBoolean("error")){
-                                SharedPrefManager.getInstance(getApplicationContext())
-                                        .userLogin(mail);
-                                Toast.makeText(getApplicationContext(), "Logining in"+mail, Toast.LENGTH_SHORT);
-                                startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
-
+                                Toast.makeText(getApplicationContext(), "Please Login", Toast.LENGTH_SHORT);
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
                             }else {
                                 Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }

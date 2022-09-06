@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(SharedPrefManager.getInstance(this).isLoggedIn()){
-        }
-
         //assign variable reference from view
         btn_fp = findViewById(R.id.thumb);
         reg = findViewById(R.id.register);
@@ -67,7 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait ...");
 
-
+        if(SharedPrefManager.getInstance(this).isLoggedIn()){
+            btn_fp.setVisibility(View.VISIBLE);
+        }else {
+            btn_fp.setVisibility(View.GONE);
+        }
         //create new method to check whether support or not
         checkBioMetricSupported();
         executor = ContextCompat.getMainExecutor(this);
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }else{
                                 Toast.makeText(
                                         getApplicationContext(),
-                                        "her"+object.getString("message"),
+                                        object.getString("message"),
                                         Toast.LENGTH_LONG
                                 ).show();
 
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     progressDialog.dismiss();
                     Toast.makeText(
                             getApplicationContext(),
-                            userEmail+" "+userPassword+"her"+error.getMessage(),
+                            error.getMessage(),
                             Toast.LENGTH_LONG
                     ).show();
                 }

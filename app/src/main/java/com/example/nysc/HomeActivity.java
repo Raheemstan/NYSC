@@ -9,28 +9,27 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private long pressedTime;
-    LinearLayout logout;
+    TextView logouttxt, txtDeploy, txtEdit;
     ImageButton settingGear;
-    ImageView imageView;
+    LinearLayout deploy, logout, edit;
 
-    public ImageButton getSettingGear() {
-        ImageButton settingGear = this.settingGear;
-        return settingGear;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        logout = findViewById(R.id.logout);
-        settingGear = findViewById(R.id.setting);
-        imageView = findViewById(R.id.imgLogout);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        settingGear = findViewById(R.id.setting);
+        logout = findViewById(R.id.logout);
+        deploy = findViewById(R.id.deploy);
+        edit = findViewById(R.id.edit);
 
         if(!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
@@ -38,15 +37,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-//        settingGear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                return;
-//            }
-//        });
-
-//        logout.setOnClickListener(this);
+        logout.setOnClickListener(this);
+        deploy.setOnClickListener(this);
+        edit.setOnClickListener(this);
+        settingGear.setOnClickListener(this);
     }
 
     @Override
@@ -65,8 +59,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-//        if (view == logout){
-//            changeActivity(MainActivity.class);
-//        }
+        if (view == logout){
+            startActivity(new Intent(this, MainActivity.class));
+        }if (view == settingGear){
+            startActivity(new Intent(this, SettingsActivity.class));
+        }if (view == edit){
+            startActivity(new Intent(this, UpdateActivity.class));
+        }if (view == deploy){
+            startActivity(new Intent(this, DashboardActivity.class));
+        }
     }
 }

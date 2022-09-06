@@ -12,9 +12,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        button = findViewById(R.id.offThumb);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        button = findViewById(R.id.offThumb);
 
         button.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);

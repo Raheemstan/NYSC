@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/login_layout"
-    android:background="@mipmap/ic_channel"
+    android:background="@drawable/nysc1"
     tools:context=".MainActivity">
 
     <ImageView
@@ -133,6 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/orlayout"
+        android:visibility="gone"
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_fingerprint"
         android:id="@+id/thumb"
